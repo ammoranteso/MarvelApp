@@ -1,0 +1,59 @@
+<nav class="navbar navbar-light navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <button
+      class="btn"
+      type="button"
+      [routerLink]="['/']">
+      <img
+        class="logo-img"
+        src="assets/img/MarvelLogo.svg"
+        alt="logo">
+    </button>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div
+      class="collapse navbar-collapse"
+      id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a
+            [routerLink]="['/hr/heroes']"
+            class="nav-link active"
+            aria-current="page">
+            Heroes
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            [routerLink]="['/hr/comics']"
+            class="nav-link active"
+            aria-current="page">
+            Comics
+          </a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Search"
+          aria-label="search">
+        <button
+          class="btn btn-outline-light"
+          type="submit">
+          Search
+        </button>
+      </form>
+    </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>

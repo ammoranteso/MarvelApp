@@ -1,0 +1,19 @@
+.container-main {
+  margin: 20px 40px;
+}
+
+.container-heroes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.title {
+  margin: 30px auto;
+  color: red;
+  font-size: 25px;
+}
+
+.card-space {
+  margin: 20px;
+}

@@ -1,0 +1,27 @@
+<div class="container-main">
+
+  <h1 class="title">Heroes List</h1>
+  <div class="container-heroes">
+    <ng-container *ngIf="charactersObservable$ | async as hr">
+      <div
+        class="card card-space"
+        *ngFor="let hero of hr"
+        style="width: 18rem;">
+        <img
+          src="{{'/' | imageUrl:hero }}"
+          class="card-img-top"
+          [alt]="hero.name">
+        <div class="card-body">
+          <h5 class="card-title">{{ hero.name }}</h5>
+          <p class="card-text">{{ hero.description || 'We do not have any description about this hero' }} </p>
+          <a
+            [routerLink]="getHeroRoute(hero.id)"
+            class="btn btn-outline-danger">
+            View hero
+          </a>
+        </div>
+      </div>
+    </ng-container>
+
+  </div>
+</div>
