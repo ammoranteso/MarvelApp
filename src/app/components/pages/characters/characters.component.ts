@@ -11,6 +11,7 @@ import { CharacterService } from 'src/app/services/character.service';
 export class CharactersComponent implements OnInit {
 
   charactersObservable$?: Observable<any>;
+  character?: Promise<any>;
 
   constructor(
     private characterService: CharacterService
@@ -19,12 +20,13 @@ export class CharactersComponent implements OnInit {
 
   ngOnInit(): void {
     this.showCharacters();
+    // this.testPromise();
   }
 
   showCharacters(): void {
     this.charactersObservable$ =
       this.characterService.getCharacters().pipe(
-        map( res => res.data.results)
+        map(res => res.data.results)
       );
   }
 
@@ -32,4 +34,16 @@ export class CharactersComponent implements OnInit {
     return [`../detail`, id];
   }
 
+  /**
+   * Example with promises
+   */
+  testPromise(): void {
+    this.character = this.characterService.getCharacters().toPromise();
+
+    this.character.then((data) => {
+      console.log(data);
+    }).catch((err) => {
+      console.log(err);
+    });
+  }
 }
