@@ -3,9 +3,10 @@
   <h1 class="title">Heroes List</h1>
   <div class="container-heroes">
     <ng-container *ngIf="charactersObservable$ | async as hr">
+
       <div
         class="card card-space"
-        *ngFor="let hero of hr"
+        *ngFor="let hero of hr | pagination:pageSize"
         style="width: 18rem;">
         <img
           src="{{'/' | imageUrl:hero }}"
@@ -20,12 +21,20 @@
             View hero
           </a>
         </div>
-      </div>
-    </ng-container>
 
+      </div>
+
+    </ng-container>
   </div>
 
   <!-- <ul *ngFor="let item of (character | async)?.data.results">
     <li>{{ item.name }}</li>
   </ul> -->
+
 </div>
+<mat-paginator
+  [length]="total"
+  [pageSize]="pageSize"
+  [pageSizeOptions]="pageSizeOptions"
+  (page)="onPageOnChange($event)">
+</mat-paginator>

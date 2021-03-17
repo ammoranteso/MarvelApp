@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { PaginationComponent } from './pagination/pagination/pagination.component';
+import { SharedModule } from 'src/app/custom-module/shared.module';
 
 
 
@@ -9,11 +9,11 @@ import { PaginationComponent } from './pagination/pagination/pagination.componen
     PaginationComponent,
   ],
   imports: [
-    CommonModule,
+    SharedModule
   ],
   exports: [
     PaginationComponent,
   ]
 
 })
-export class SharedModule { }
+export class UiModule { }

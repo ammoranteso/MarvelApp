@@ -1,7 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { CharacterController } from '../utils/enums';
+import { paramsConvert } from '../utils/functions';
+import { IMarvelDataResponse, IPaginationOptions } from '../utils/interfaces/auxiliary';
+import { IMarvelApiResponse } from '../utils/interfaces/auxiliary/marvel-api-response.interface';
+import { ICharactersResponse } from '../utils/interfaces/response';
 
 @Injectable({
   providedIn: 'root'
@@ -10,19 +14,21 @@ export class CharacterService {
 
   constructor(private http: HttpClient) { }
 
-  getCharacters(): Observable<any> {
-    return this.http.get(
-      `${environment.apiUrl}/characters?ts=${environment.ts}&apikey=${environment.apiKey}&hash=${environment.hash}`);
+  getCharacters(options: IPaginationOptions): Observable<IMarvelApiResponse<IMarvelDataResponse<ICharactersResponse>>> {
+    return this.http.get<IMarvelApiResponse<IMarvelDataResponse<ICharactersResponse>>>(
+      `${CharacterController.CHARACTER}`, {
+      params: paramsConvert(options)
+    });
   }
 
-  getCharactersById(id: string): Observable<{}> {
-    return this.http.get(
-      `${environment.apiUrl}/characters/${id}?ts=${environment.ts}&apikey=${environment.apiKey}&hash=${environment.hash}`);
+  getCharactersById(id: string): Observable<IMarvelApiResponse<IMarvelDataResponse<ICharactersResponse>>> {
+    return this.http.get<IMarvelApiResponse<IMarvelDataResponse<ICharactersResponse>>>(
+      `${CharacterController.CHARACTER}/${id}`);
   }
 
-  getComicsById(id: string): Observable<{}> {
-    return this.http.get(
-      `${environment.apiUrl}/characters/${id}/comics?ts=${environment.ts}&apikey=${environment.apiKey}&hash=${environment.hash}`);
+  getComicsById(id: string): Observable<IMarvelApiResponse<IMarvelDataResponse<ICharactersResponse>>> {
+    return this.http.get<IMarvelApiResponse<IMarvelDataResponse<ICharactersResponse>>>(
+      `${CharacterController.CHARACTER}/${id}/comics`);
   }
 
 }

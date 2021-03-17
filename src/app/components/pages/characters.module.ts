@@ -6,6 +6,9 @@ import { WrapperMenuComponent } from './wrapper-menu/wrapper-menu.component';
 import { ComicsComponent } from './comics/comics.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { ImageUrlPipe } from '../shared/Pipes/image-url/image-url.pipe';
+import { PaginationPipe } from '../shared/Pipes/pagination/pagination.pipe';
+import { SharedModule } from 'src/app/custom-module/shared.module';
+import { UiModule } from '../shared/ui/ui.module';
 
 
 
@@ -16,9 +19,12 @@ import { ImageUrlPipe } from '../shared/Pipes/image-url/image-url.pipe';
     ComicsComponent,
     HeroDetailComponent,
     ImageUrlPipe,
+    PaginationPipe,
   ],
   imports: [
     CommonModule,
+    SharedModule,
+    UiModule,
     HEROES_ROUTES,
   ]
 })
